@@ -1,0 +1,5 @@
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\Game4.Core\bin\Release\Game4.Core.dll
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\Game4.Core\bin\Release\Game4.Core.pdb
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\Game4.Core\obj\Release\Game4.Core.csprojResolveAssemblyReference.cache
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\Game4.Core\obj\Release\Game4.Core.dll
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\Game4.Core\obj\Release\Game4.Core.pdb

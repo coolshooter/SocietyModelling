@@ -1,0 +1,16 @@
+P:\__My Projects\_LifeStrategy Root\LifeStrategyApp\LifeStrategyApp.Common\bin\Debug\SocietyModelling.Common.dll
+P:\__My Projects\_LifeStrategy Root\LifeStrategyApp\LifeStrategyApp.Common\bin\Debug\SocietyModelling.Common.pdb
+P:\__My Projects\_LifeStrategy Root\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\SocietyModelling.Common.dll
+P:\__My Projects\_LifeStrategy Root\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\SocietyModelling.Common.pdb
+C:\__SERGE\_Serge\_H projects\_LifeStrategyApp Root\LifeStrategyApp\LifeStrategyApp.Common\bin\Debug\SocietyModelling.Common.dll
+C:\__SERGE\_Serge\_H projects\_LifeStrategyApp Root\LifeStrategyApp\LifeStrategyApp.Common\bin\Debug\SocietyModelling.Common.pdb
+C:\__SERGE\_Serge\_H projects\_LifeStrategyApp Root\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\SocietyModelling.Common.dll
+C:\__SERGE\_Serge\_H projects\_LifeStrategyApp Root\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\SocietyModelling.Common.pdb
+P:\__My Projects\_LifeStrategy Root\SocietyModelling\LifeStrategyApp.Common\bin\Debug\SocietyModelling.Common.dll
+P:\__My Projects\_LifeStrategy Root\SocietyModelling\LifeStrategyApp.Common\bin\Debug\SocietyModelling.Common.pdb
+P:\__My Projects\_LifeStrategy Root\SocietyModelling\LifeStrategyApp.Common\obj\Debug\SocietyModelling.Common.dll
+P:\__My Projects\_LifeStrategy Root\SocietyModelling\LifeStrategyApp.Common\obj\Debug\SocietyModelling.Common.pdb
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\LifeStrategyApp.Common\bin\Debug\SocietyModelling.Common.dll
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\LifeStrategyApp.Common\bin\Debug\SocietyModelling.Common.pdb
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\LifeStrategyApp.Common\obj\Debug\SocietyModelling.Common.dll
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\LifeStrategyApp.Common\obj\Debug\SocietyModelling.Common.pdb

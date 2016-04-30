@@ -1,0 +1,14 @@
+P:\__My Projects\_LifeStrategy Root\LifeStrategyApp\LifeStrategyApp.Common\bin\Debug\LifeStrategyApp.Common.dll
+P:\__My Projects\_LifeStrategy Root\LifeStrategyApp\LifeStrategyApp.Common\bin\Debug\LifeStrategyApp.Common.pdb
+P:\__My Projects\_LifeStrategy Root\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\LifeStrategyApp.Common.dll
+P:\__My Projects\_LifeStrategy Root\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\LifeStrategyApp.Common.pdb
+C:\__SERGE\_Serge\_H projects\__Experiments\LifeStrategyApp\LifeStrategyApp\LifeStrategyApp.Common\bin\Debug\LifeStrategyApp.Common.dll
+C:\__SERGE\_Serge\_H projects\__Experiments\LifeStrategyApp\LifeStrategyApp\LifeStrategyApp.Common\bin\Debug\LifeStrategyApp.Common.pdb
+C:\__SERGE\_Serge\_H projects\__Experiments\LifeStrategyApp\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\LifeStrategyApp.Common.dll
+C:\__SERGE\_Serge\_H projects\__Experiments\LifeStrategyApp\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\LifeStrategyApp.Common.pdb
+P:\__My Projects\_LifeStrategy Root\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\LifeStrategyApp.Common.csprojResolveAssemblyReference.cache
+C:\__SERGE\_Serge\_H projects\_LifeStrategyApp Root\LifeStrategyApp\LifeStrategyApp.Common\bin\Debug\LifeStrategyApp.Common.dll
+C:\__SERGE\_Serge\_H projects\_LifeStrategyApp Root\LifeStrategyApp\LifeStrategyApp.Common\bin\Debug\LifeStrategyApp.Common.pdb
+C:\__SERGE\_Serge\_H projects\_LifeStrategyApp Root\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\LifeStrategyApp.Common.csprojResolveAssemblyReference.cache
+C:\__SERGE\_Serge\_H projects\_LifeStrategyApp Root\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\LifeStrategyApp.Common.dll
+C:\__SERGE\_Serge\_H projects\_LifeStrategyApp Root\LifeStrategyApp\LifeStrategyApp.Common\obj\Debug\LifeStrategyApp.Common.pdb

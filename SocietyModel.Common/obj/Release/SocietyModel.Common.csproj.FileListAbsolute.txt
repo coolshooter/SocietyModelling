@@ -1,0 +1,5 @@
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\SocietyModel.Common\bin\Release\SocietyModelling.Common.dll
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\SocietyModel.Common\bin\Release\SocietyModelling.Common.pdb
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\SocietyModel.Common\obj\Release\SocietyModel.Common.csprojResolveAssemblyReference.cache
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\SocietyModel.Common\obj\Release\SocietyModelling.Common.dll
+P:\__My Projects\_SocietyModelling Root\SocietyModelling\SocietyModel.Common\obj\Release\SocietyModelling.Common.pdb
