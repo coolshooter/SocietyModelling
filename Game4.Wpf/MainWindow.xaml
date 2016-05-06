@@ -5,56 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Game4.Wpf"
         mc:Ignorable="d"
-        Title="Моделирование общества (автор: Лютько Сергей)." 
-		Width="750" Height="500" 
-		MinWidth="750" MinHeight="500"
+        Title="Моделирование жизни общества (автор: Лютько Сергей)." 
+		Width="750" Height="535" 
+		MinWidth="750" MinHeight="535"
 		WindowStartupLocation="CenterScreen">
 
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="280"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
+		
         <Grid Grid.Row="0" Margin="0 5 0 5">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="340"></ColumnDefinition>
+                <ColumnDefinition Width="220"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Vertical">
-                <CheckBox x:Name="chbStable1" IsChecked="true">Ключевой персонаж 1 (слева) стабилен в поведении</CheckBox>
-                <CheckBox x:Name="chbStable2" IsChecked="false">Ключевой персонаж 2 (справа) стабилен в поведении</CheckBox>
-            </StackPanel>
-            <StackPanel Grid.Column="1" Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0 0 10 0">Стратегия 1 персонажа (0..1 или пусто):</TextBlock>
-                    <TextBox x:Name="txtPositiveness1" Width="150">1.0</TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0 0 10 0">Стратегия 2 персонажа (0..1 или пусто):</TextBlock>
-                    <TextBox x:Name="txtPositiveness2" Width="150">0.0</TextBox>
-                </StackPanel>
-            </StackPanel>
+
+            <CheckBox x:Name="chbStable1" Grid.Row="0" Grid.Column="0" IsChecked="true">Ключевой персонаж 1 (слева) стабилен в поведении</CheckBox>
+            <CheckBox x:Name="chbStable2" Grid.Row="1" Grid.Column="0" IsChecked="false">Ключевой персонаж 2 (справа) стабилен в поведении</CheckBox>
+
+            <TextBlock Grid.Row="0" Grid.Column="1">Стратегия 1 персонажа (0..1 или пусто):</TextBlock>
+            <TextBox x:Name="txtPositiveness1" Grid.Row="0" Grid.Column="2" Width="150">1.0</TextBox>
+
+            <TextBlock Grid.Row="1" Grid.Column="1">Стратегия 2 персонажа (0..1 или пусто):</TextBlock>
+            <TextBox x:Name="txtPositiveness2" Grid.Row="1" Grid.Column="2" Width="150">0.0</TextBox>
+
+            <TextBlock Grid.Row="2" Grid.Column="1">Стратегия остальных персонажей:</TextBlock>
+            <TextBox x:Name="txtPositiveness3" Grid.Row="2" Grid.Column="2" Width="150"></TextBox>
         </Grid>
+		
 		<Canvas x:Name="cnvMain" Grid.Row="1"></Canvas>
+		
         <Grid Grid.Row="2">
             <StackPanel Orientation="Vertical">
-				<TextBlock>
-					Зеленая стратегия: разработка идей и безвозмездная помощь ими (и не только ими) наиболее нуждающимся.
+                <TextBlock>
+					Стратегия (0..1): 1 = приверженность "зеленой" стратегии, 0 = "красной", возможны дробные значения, пусто = нет стратегии.
+                </TextBlock>
+                <TextBlock>
+					Зеленая стратегия: безвозмездный, эффективный, созидательный вклад в общество (любой из таких видов).
 				</TextBlock>
                 <TextBlock>
 					Красная стратегия: максимальный заработок в короткие сроки.
                 </TextBlock>
-				<TextBlock>
-					Стратегия (0..1): 1 = приверженность "зеленой" стратегии, 0 = "красной", возможны дробные значения, пусто = нет стратегии.
+                <TextBlock>
+					Персонажи переключаются между стратегиями, вдохновляясь либо перспективами роста уровня жизни (зеленая стратегия), 
                 </TextBlock>
                 <TextBlock>
-					Персонажи переключаются между стратегиями, вдохновляясь либо перспективами роста уровня жизни ("зеленая" стратегия), 
-                </TextBlock>
-                <TextBlock>
-					либо быстрым заработком ("красная").
+					либо быстрым заработком (красная).
 				</TextBlock>
             </StackPanel>
         </Grid>

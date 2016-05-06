@@ -24,10 +24,12 @@ namespace Game4.Core
 		public List<Personage> AllPersonages;
 
 		public Env(double? positiveness1 = 1, bool allowChange1 = false, 
-			double? positiveness2 = null, bool allowChange2 = true)
+			double? positiveness2 = null, bool allowChange2 = true,
+			double? positiveness3 = null)
 		{
-			if (positiveness1 < 0 || positiveness1 > 1 || positiveness2 < 0 ||
-				positiveness2 > 1)
+			if (positiveness1 < 0 || positiveness1 > 1 ||
+				positiveness2 < 0 || positiveness2 > 1 ||
+				positiveness3 < 0 || positiveness3 > 1)
 				throw new ArgumentException("Позитивность должна быть в интервале 0..1");
 
 			PersonageMatrix = new Personage[Width, Height];
@@ -38,6 +40,7 @@ namespace Game4.Core
 				for (int y = 0; y < PersonageMatrix.GetLength(1); y++)
 				{
 					Personage p = new Personage(x, y, null);
+					p.Positiveness = positiveness3;
 					PersonageMatrix[x, y] = p;
 					AllPersonages.Add(p);
                 }

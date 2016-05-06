@@ -32,16 +32,19 @@ namespace Game4.Wpf
 
 			double? positiveness1 = txtPositiveness1.Text.ParseNullableDouble();
 			double? positiveness2 = txtPositiveness2.Text.ParseNullableDouble();
+			double? positiveness3 = txtPositiveness3.Text.ParseNullableDouble();
 
-			if (positiveness1 < 0 || positiveness1 > 1 || positiveness2 < 0 ||
-				positiveness2 > 1)
+			if (positiveness1 < 0 || positiveness1 > 1 || 
+				positiveness2 < 0 || positiveness2 > 1 ||
+				positiveness3 < 0 || positiveness3 > 1)
 			{
 				MessageBox.Show("Стратегия должна быть в интервале 0..1 или пустое значение");
 				return;
 			}
 
 			Env env = new Env(positiveness1, chbStable1.IsChecked != true, 
-				positiveness2, chbStable2.IsChecked != true);
+				positiveness2, chbStable2.IsChecked != true,
+				positiveness3);
 
 			AddUIElements(env, cnvMain);
 
@@ -120,9 +123,14 @@ namespace Game4.Wpf
 
 			lblInfo.Text = 
 				"Шаг: " + (iteration + 1) +
-				", средний уровень жизни: " + Math.Round(avg) +
-				", минимальный: " + Math.Round(min) +
-				", максимальный: " + Math.Round(max);
+				", средний уровень жизни: " + RoundAndFormatValueForUI(avg) +
+				", минимальный: " + RoundAndFormatValueForUI(min) +
+				", максимальный: " + RoundAndFormatValueForUI(max);
+		}
+
+		string RoundAndFormatValueForUI(double value)
+		{
+			return Math.Round(value).ToString("N0");
 		}
 	}
 }
