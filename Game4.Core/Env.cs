@@ -23,8 +23,8 @@ namespace Game4.Core
 		public Personage[,] PersonageMatrix;
 		public List<Personage> AllPersonages;
 
-		public Env(double positiveness1 = 1, bool allowChange1 = false, 
-			double positiveness2 = 0, bool allowChange2 = true)
+		public Env(double? positiveness1 = 1, bool allowChange1 = false, 
+			double? positiveness2 = null, bool allowChange2 = true)
 		{
 			if (positiveness1 < 0 || positiveness1 > 1 || positiveness2 < 0 ||
 				positiveness2 > 1)

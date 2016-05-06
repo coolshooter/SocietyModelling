@@ -29,6 +29,17 @@ namespace SocietyModel.Common
 				return defaultValue;
 		}
 
+		public static double? ParseNullableDouble(this string source, double? defaultValue = null)
+		{
+			double res;
+
+			if (double.TryParse(source, System.Globalization.NumberStyles.Number,
+				CultureInfo.InvariantCulture, out res))
+				return res;
+			else
+				return defaultValue;
+		}
+
 		public static string F(this string format, params object[] args)
 		{
 			return string.Format(format, args);

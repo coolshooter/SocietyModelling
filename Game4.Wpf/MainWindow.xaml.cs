@@ -30,13 +30,13 @@ namespace Game4.Wpf
 		{
 			btnRun.IsEnabled = false;
 
-			double positiveness1 = txtPositiveness1.Text.ParseDouble(0);
-			double positiveness2 = txtPositiveness2.Text.ParseDouble(0);
+			double? positiveness1 = txtPositiveness1.Text.ParseNullableDouble();
+			double? positiveness2 = txtPositiveness2.Text.ParseNullableDouble();
 
 			if (positiveness1 < 0 || positiveness1 > 1 || positiveness2 < 0 ||
 				positiveness2 > 1)
 			{
-				MessageBox.Show("Позитивность должна быть в интервале 0..1");
+				MessageBox.Show("Стратегия должна быть в интервале 0..1 или пустое значение");
 				return;
 			}
 
