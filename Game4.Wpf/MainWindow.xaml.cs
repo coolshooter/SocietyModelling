@@ -43,7 +43,8 @@ namespace Game4.Wpf
 			}
 
 			Env env = new Env(positiveness1, chbStable1.IsChecked != true, 
-				positiveness2, chbStable2.IsChecked != true,
+				positiveness2, rbtnStable2.IsChecked != true,
+				rbtnIncrease2.IsChecked == true,
 				positiveness3);
 
 			AddUIElements(env, cnvMain);

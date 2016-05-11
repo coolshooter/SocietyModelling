@@ -32,7 +32,8 @@
             </Grid.ColumnDefinitions>
 
             <CheckBox x:Name="chbStable1" Grid.Row="0" Grid.Column="0" IsChecked="true">Ключевой персонаж 1 (слева) стабилен в поведении</CheckBox>
-            <CheckBox x:Name="chbStable2" Grid.Row="1" Grid.Column="0" IsChecked="false">Ключевой персонаж 2 (справа) стабилен в поведении</CheckBox>
+            <RadioButton x:Name="rbtnStable2" Grid.Row="1" Grid.Column="0" IsChecked="true" GroupName="behavior2">Ключевой персонаж 2 (справа) стабилен в поведении</RadioButton>
+            <RadioButton x:Name="rbtnIncrease2" Grid.Row="2" Grid.Column="0" IsChecked="false" GroupName="behavior2">Автоповышение стратегии 2го персонажа</RadioButton>
 
             <TextBlock Grid.Row="0" Grid.Column="1">Стратегия 1 персонажа (0..1 или пусто):</TextBlock>
             <TextBox x:Name="txtPositiveness1" Grid.Row="0" Grid.Column="2" Width="150">1.0</TextBox>
@@ -40,8 +41,8 @@
             <TextBlock Grid.Row="1" Grid.Column="1">Стратегия 2 персонажа (0..1 или пусто):</TextBlock>
             <TextBox x:Name="txtPositiveness2" Grid.Row="1" Grid.Column="2" Width="150">0.0</TextBox>
 
-            <TextBlock Grid.Row="2" Grid.Column="1">Стратегия остальных персонажей:</TextBlock>
-            <TextBox x:Name="txtPositiveness3" Grid.Row="2" Grid.Column="2" Width="150"></TextBox>
+            <TextBlock Grid.Row="2" Grid.Column="1">Стратегия других персонажей:</TextBlock>
+            <TextBox x:Name="txtPositiveness3" Grid.Row="2" Grid.Column="2" Width="150">0.5</TextBox>
         </Grid>
 		
 		<Canvas x:Name="cnvMain" Grid.Row="1"></Canvas>
@@ -52,10 +53,10 @@
 					Стратегия (0..1): 1 = приверженность "зеленой" стратегии, 0 = "красной", возможны дробные значения, пусто = нет стратегии.
                 </TextBlock>
                 <TextBlock>
-					Зеленая стратегия: безвозмездный, эффективный, созидательный вклад в общество, любой из множества видов реализации.
+					Зеленая стратегия: безвозмездный, созидательный вклад в людей, любой из видов реализации.
 				</TextBlock>
                 <TextBlock>
-					Красная стратегия: максимальный заработок в короткие сроки.
+					Красная стратегия: заработок без собственного производства в короткие сроки.
                 </TextBlock>
                 <TextBlock>
 					Персонажи переключаются между стратегиями, вдохновляясь либо перспективами роста уровня жизни (зеленая стратегия), 

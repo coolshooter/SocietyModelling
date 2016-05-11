@@ -19,6 +19,8 @@ namespace Game4.Core
 		/// </summary>
 		public bool IsKey { get; set; }
 
+		public bool AutoIncreasePositiveness { get; set; }
+
 		/// <summary>
 		/// Позитивность персонажа - число от 0 до 1 включительно.
 		/// 1 = действует в интересах общества 
@@ -84,7 +86,8 @@ namespace Game4.Core
 						{
 							var t = env.PersonageMatrix[x, y];
 							double rndCoef = Svc.Rnd.NextDouble();
-							double eff = GetInfluenceEffectiveness(t);
+							double eff = GetInfluenceEffectiveness(t, shouldActPositive);
+							//double amount = Wealth * 0.15 * eff * rndCoef;
 							double amount = Wealth * 0.2 * eff * rndCoef;
 
 							/// уменьшаем объем влияния в соответствии с неуверенностью
@@ -126,7 +129,17 @@ namespace Game4.Core
 			if (!AllowChangePositiveness)
 				return;
 
-			List<double> values = new List<double>();
+			if (AutoIncreasePositiveness && Positiveness.HasValue)
+			{
+				NewPositiveness = Positiveness + 0.05;
+
+				if (NewPositiveness > 1)
+					NewPositiveness = 1;
+
+				return;
+			}
+
+			List<Personage> personages = new List<Personage>();
 
 			for (int x = XIndex - 1; x <= XIndex + 1; x++)
 			{
@@ -137,21 +150,36 @@ namespace Game4.Core
 						var source = env.PersonageMatrix[x, y];
 
 						if (source.Positiveness.HasValue)
-							values.Add(source.Positiveness.Value);
+							personages.Add(source);
 					}
 				}
 			}
 
-			if (values.Any())
+			if (personages.Any())
 			{
-				double avg = values.Average();
+				double sum = 0;
+				double effSum = 0;
 
-				if (!NewPositiveness.HasValue)
-					NewPositiveness = avg;
-				else
-					/// смещаемся на половину расстояния между своим предыдущим
-					/// состоянием и средним состоянием окружающих (у которых стратегия задана)
-					NewPositiveness = (NewPositiveness.Value + avg) / 2.0;
+				foreach (var p in personages)
+				{
+					var eff = GetPositivenessChangeEffectiveness(p);
+					sum += p.Positiveness.Value * eff;
+					effSum += eff;
+				}
+
+				/// учитываем собственную стратегию
+				if (Positiveness.HasValue)
+				{
+					/// скорость смещения делаем не слишком быстрой,
+					/// приравнивая свою прошлую стратегию к стратегиям 3х
+					/// новых эффективно влияющих соседей
+					sum += 3 * Positiveness.Value;
+					effSum += 3;
+				}
+
+				double avg = sum / effSum;
+
+				NewPositiveness = avg;
 			}
 		}
 
@@ -176,14 +204,68 @@ namespace Game4.Core
 			}
 		}
 
-		double GetInfluenceEffectiveness(Personage target)
+		double GetInfluenceEffectiveness(Personage target, bool isHelp)
 		{
+			double eff1;
+
+			if (Wealth < target.Wealth / 2.0)
+				eff1 = 0;
 			if (Wealth < target.Wealth)
-				return 0;
+				eff1 = 0.3;
 			else if (Wealth < 2 * target.Wealth)
+				eff1 = 0.7;
+			else
+				eff1 = 1;
+
+			double eff2;
+
+			if (!target.Positiveness.HasValue)
+				/// типа мало что умеет пока что
+				eff2 = 0.5;
+			else if (isHelp)
+			{
+				/// если помогаем более позитивному, то он точно знает как
+				/// распорядиться нашей помощью, эффективность 100%
+				if (target.Positiveness >= Positiveness)
+					eff2 = 1;
+				//// если помогаем тому, кто менее чем в 2 раза отличается
+				/// от нашей позитивности в сторону негативности,
+				/// то эффективность считаем 70%
+				/// (помощь - это не только еда и крыша над головой, но и возможности
+				/// для самореализации, которые не каждый умеет использовать с полной отдачей)
+				else if (target.Positiveness >= Positiveness / 2.0)
+					eff2 = 0.7;
+				else
+					eff2 = 0.3;
+			}
+			else
+			{
+				/// если отнимаем у более позитивного, то делается это не сложно
+				/// с физической точки зрения
+				if (target.Positiveness >= 2 * Positiveness)
+					eff2 = 1;
+				if (target.Positiveness >= Positiveness)
+					eff2 = 0.7;
+				/// отъем у того, кто более негативен, сложнее
+				else if (target.Positiveness >= Positiveness / 2.0)
+					eff2 = 0.5;
+				else
+					eff2 = 0.2;
+			}
+
+			return eff1 * eff2;
+		}
+
+		double GetPositivenessChangeEffectiveness(Personage source)
+		{
+			/// у более богатых стратегия перенимается быстрее, потому
+			/// что подсознательно есть стремление жить так же хорошо
+			if (source.Wealth > Wealth)
+				return 1;
+			else if (source.Wealth >= Wealth / 2.0)
 				return 0.5;
 			else
-				return 1;
+				return 0.2;
 		}
 	}
 }

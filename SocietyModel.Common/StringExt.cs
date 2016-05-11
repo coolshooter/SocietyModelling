@@ -20,20 +20,29 @@ namespace SocietyModel.Common
 
 		public static double ParseDouble(this string source, double defaultValue = 0)
 		{
-			double res;
+			double? res = source.ParseNullableDouble(defaultValue);
 
-			if (double.TryParse(source, System.Globalization.NumberStyles.Number,
-				CultureInfo.InvariantCulture, out res))
-				return res;
-			else
+			if (res == null)
 				return defaultValue;
+			else
+				return res.Value;
+
+			//double res;
+
+			//if (double.TryParse(source, System.Globalization.NumberStyles.Number,
+			//	CultureInfo.InvariantCulture, out res))
+			//	return res;
+			//else
+			//	return defaultValue;
 		}
 
 		public static double? ParseNullableDouble(this string source, double? defaultValue = null)
 		{
 			double res;
+			source = source.Replace(',', '.');
 
-			if (double.TryParse(source, System.Globalization.NumberStyles.Number,
+			if (double.TryParse(source, 
+				System.Globalization.NumberStyles.Number,
 				CultureInfo.InvariantCulture, out res))
 				return res;
 			else

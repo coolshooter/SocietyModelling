@@ -2,4 +2,3 @@ P:\__My Projects\_SocietyModelling Root\SocietyModelling\Game4.Core\bin\Debug\Ga
 P:\__My Projects\_SocietyModelling Root\SocietyModelling\Game4.Core\bin\Debug\Game4.Core.pdb
 P:\__My Projects\_SocietyModelling Root\SocietyModelling\Game4.Core\obj\Debug\Game4.Core.dll
 P:\__My Projects\_SocietyModelling Root\SocietyModelling\Game4.Core\obj\Debug\Game4.Core.pdb
-P:\__My Projects\_SocietyModelling Root\SocietyModelling\Game4.Core\obj\Debug\Game4.Core.csprojResolveAssemblyReference.cache

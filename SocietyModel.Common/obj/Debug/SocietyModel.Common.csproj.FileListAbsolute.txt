@@ -15,4 +15,3 @@ P:\__My Projects\_SocietyModelling Root\SocietyModelling\SocietyModel.Common\bin
 P:\__My Projects\_SocietyModelling Root\SocietyModelling\SocietyModel.Common\bin\Debug\SocietyModelling.Common.pdb
 P:\__My Projects\_SocietyModelling Root\SocietyModelling\SocietyModel.Common\obj\Debug\SocietyModelling.Common.dll
 P:\__My Projects\_SocietyModelling Root\SocietyModelling\SocietyModel.Common\obj\Debug\SocietyModelling.Common.pdb
-P:\__My Projects\_SocietyModelling Root\SocietyModelling\SocietyModel.Common\obj\Debug\SocietyModel.Common.csprojResolveAssemblyReference.cache

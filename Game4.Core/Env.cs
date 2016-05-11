@@ -25,6 +25,7 @@ namespace Game4.Core
 
 		public Env(double? positiveness1 = 1, bool allowChange1 = false, 
 			double? positiveness2 = null, bool allowChange2 = true,
+			bool increase2 = false,
 			double? positiveness3 = null)
 		{
 			if (positiveness1 < 0 || positiveness1 > 1 ||
@@ -63,13 +64,16 @@ namespace Game4.Core
 			p2.IsKey = true;
 			/// тут лучше даже true поставить в будущем, но интересны оба значения
 			p2.AllowChangePositiveness = allowChange2;
-		}
+			p2.AutoIncreasePositiveness = increase2;
+			if (p2.AutoIncreasePositiveness)
+				p2.AllowChangePositiveness = true;
+        }
 
 		public async Task Run(bool allowMigration, Action<Personage> updateUI = null,
 			Action<List<Personage>, int> updateUISummary = null)
 		{
 			/// цикл по итерациям
-			for (int i = 0; i < 230; i++)
+			for (int i = 0; i < 150; i++)
 			{
 				foreach (var p in AllPersonages)
 				{
