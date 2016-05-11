@@ -58,6 +58,7 @@ namespace Game4.Core
 		public int YIndex { get; set; }
 
 		public double TempInfluenceAbsAmount { get; set; }
+		public double TempInfluenceStrategyCoef { get; set; }
 
 		public Personage(int xIndex, int yIndex, double? positiveness = null)
 		{
@@ -104,15 +105,37 @@ namespace Game4.Core
 
 							t.TempInfluenceAbsAmount = amount;
 
+							/// эти вычисления мало сказываются на результате
+							///// делаем коррекцию приоритетности целевой аудитории
+							///// по персонажам, которые негативны и не поддаются улучшению
+							//if (shouldActPositive && t.Positiveness < Positiveness &&
+							//	!t.AllowChangePositiveness && !t.AutoIncreasePositiveness)
+							//	/// экономим силы помощи, если мы видим, что этот персонаж 
+							//	/// не изменится (допустим, что это как-то заметно)
+							//	t.TempInfluenceStrategyCoef = 0.5;
+
+							//else if (!shouldActPositive && t.Positiveness < Positiveness &&
+							//	!t.AllowChangePositiveness && !t.AutoIncreasePositiveness)
+							//	/// негативно влияем на того, кто хуже нас и кто не собирается
+							//	/// меняться
+							//	t.TempInfluenceStrategyCoef = 1.5;
+
+							//else
+							//	t.TempInfluenceStrategyCoef = 1;
+
+							t.TempInfluenceStrategyCoef = 1;
+
 							ps.Add(t);
 						}
 					}
 				}
 
-				double maxAmount = ps.Max(p => p.TempInfluenceAbsAmount);
+				double max = ps.Max(p => 
+					p.TempInfluenceAbsAmount * p.TempInfluenceStrategyCoef);
 
 				/// ищем того, на кого можем повлиять больше всего 
-				var target = ps.FirstOrDefault(p => p.TempInfluenceAbsAmount == maxAmount);
+				var target = ps.FirstOrDefault(p => 
+					p.TempInfluenceAbsAmount * p.TempInfluenceStrategyCoef == max);
 
 				if (shouldActPositive)
 					target.NewWealth += target.TempInfluenceAbsAmount;
@@ -171,10 +194,11 @@ namespace Game4.Core
 				if (Positiveness.HasValue)
 				{
 					/// скорость смещения делаем не слишком быстрой,
-					/// приравнивая свою прошлую стратегию к стратегиям 3х
+					/// приравнивая свою прошлую стратегию к стратегиям k
 					/// новых эффективно влияющих соседей
-					sum += 3 * Positiveness.Value;
-					effSum += 3;
+					double k = 3;
+					sum += k * Positiveness.Value;
+					effSum += k;
 				}
 
 				double avg = sum / effSum;

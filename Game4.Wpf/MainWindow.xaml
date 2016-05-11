@@ -32,8 +32,8 @@
             </Grid.ColumnDefinitions>
 
             <CheckBox x:Name="chbStable1" Grid.Row="0" Grid.Column="0" IsChecked="true">Ключевой персонаж 1 (слева) стабилен в поведении</CheckBox>
-            <RadioButton x:Name="rbtnStable2" Grid.Row="1" Grid.Column="0" IsChecked="true" GroupName="behavior2">Ключевой персонаж 2 (справа) стабилен в поведении</RadioButton>
-            <RadioButton x:Name="rbtnIncrease2" Grid.Row="2" Grid.Column="0" IsChecked="false" GroupName="behavior2">Автоповышение стратегии 2го персонажа</RadioButton>
+            <CheckBox x:Name="chbStable2" Grid.Row="1" Grid.Column="0" IsChecked="true" >Ключевой персонаж 2 (справа) стабилен в поведении</CheckBox>
+            <CheckBox x:Name="chbIncrease2" Grid.Row="2" Grid.Column="0" IsChecked="false" >Автоповышение стратегии 2го персонажа</CheckBox>
 
             <TextBlock Grid.Row="0" Grid.Column="1">Стратегия 1 персонажа (0..1 или пусто):</TextBlock>
             <TextBox x:Name="txtPositiveness1" Grid.Row="0" Grid.Column="2" Width="150">1.0</TextBox>
@@ -56,7 +56,7 @@
 					Зеленая стратегия: безвозмездный, созидательный вклад в людей, любой из видов реализации.
 				</TextBlock>
                 <TextBlock>
-					Красная стратегия: секретная стратегия X :). В целях благоприятного влияния приложения ее описание не приводится.
+					Красная стратегия: из лучших помыслов ее описание не приводится.
                 </TextBlock>
                 <TextBlock>
 					Персонажи переключаются между стратегиями, вдохновляясь их преимуществами. 

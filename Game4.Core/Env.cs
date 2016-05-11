@@ -115,7 +115,7 @@ namespace Game4.Core
 					updateUISummary(AllPersonages, i);
 
 				if (updateUI != null)
-					await Task.Delay(30);
+					await Task.Delay(20);
 			}
 		}
 
