@@ -39,10 +39,10 @@
             <TextBox x:Name="txtPositiveness1" Grid.Row="0" Grid.Column="2" Width="150">1.0</TextBox>
 
             <TextBlock Grid.Row="1" Grid.Column="1">Стратегия 2 персонажа (0..1 или пусто):</TextBlock>
-            <TextBox x:Name="txtPositiveness2" Grid.Row="1" Grid.Column="2" Width="150">0.0</TextBox>
+            <TextBox x:Name="txtPositiveness2" Grid.Row="1" Grid.Column="2" Width="150">1.0</TextBox>
 
             <TextBlock Grid.Row="2" Grid.Column="1">Стратегия других персонажей:</TextBlock>
-            <TextBox x:Name="txtPositiveness3" Grid.Row="2" Grid.Column="2" Width="150">0.5</TextBox>
+            <TextBox x:Name="txtPositiveness3" Grid.Row="2" Grid.Column="2" Width="150">0.0</TextBox>
         </Grid>
 		
 		<Canvas x:Name="cnvMain" Grid.Row="1"></Canvas>

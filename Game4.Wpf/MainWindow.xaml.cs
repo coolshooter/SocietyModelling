@@ -34,29 +34,30 @@ namespace Game4.Wpf
 			double? positiveness2 = txtPositiveness2.Text.ParseNullableDouble();
 			double? positiveness3 = txtPositiveness3.Text.ParseNullableDouble();
 
-			if (positiveness1 < 0 || positiveness1 > 1 || 
+			if (positiveness1 < 0 || positiveness1 > 1 ||
 				positiveness2 < 0 || positiveness2 > 1 ||
 				positiveness3 < 0 || positiveness3 > 1)
 			{
 				MessageBox.Show("Стратегия должна быть в интервале 0..1 или пустое значение");
-				return;
 			}
+			else
+			{
+				Env env = new Env(positiveness1, chbStable1.IsChecked != true,
+					positiveness2, chbStable2.IsChecked != true,
+					chbIncrease2.IsChecked == true,
+					positiveness3);
 
-			Env env = new Env(positiveness1, chbStable1.IsChecked != true, 
-				positiveness2, chbStable2.IsChecked != true,
-				chbIncrease2.IsChecked == true,
-				positiveness3);
+				AddUIElements(env, cnvMain);
 
-			AddUIElements(env, cnvMain);
+				await env.Run(false, p => SetColorAndInfo(p),
+					(ps, i) => UpdateSummary(ps, i));
 
-			await env.Run(false, p => SetColorAndInfo(p), 
-				(ps, i) => UpdateSummary(ps, i));
+				foreach (var p in env.AllPersonages)
+					SetColorAndInfo(p);
 
-			foreach (var p in env.AllPersonages)
-				SetColorAndInfo(p);
-
-			var keyPs = env.AllPersonages.Where(p => p.IsKey).ToList();
-			var sorted = env.AllPersonages.OrderByDescending(p => p.Wealth).ToList();
+				var keyPs = env.AllPersonages.Where(p => p.IsKey).ToList();
+				var sorted = env.AllPersonages.OrderByDescending(p => p.Wealth).ToList();
+			}
 
 			btnRun.IsEnabled = true;
 		}
@@ -71,7 +72,7 @@ namespace Game4.Wpf
 				Border border = new Border();
 				border.BorderBrush = Brushes.Black;
 				border.BorderThickness = p.IsKey ? new Thickness(2) : new Thickness(1);
-				border.Width = 55;
+				border.Width = 60;
 				border.Height = 30;
 
 				TextBlock lbl = new TextBlock();
@@ -108,7 +109,7 @@ namespace Game4.Wpf
 			border.Background = backBrush;
 
 			var lbl = ((TextBlock)border.Child);
-			lbl.Text = ((double)Math.Round(p.Wealth)).ToString();
+			lbl.Text = RoundAndFormatValueForUI(p.Wealth);
 
 			if (p.IsKey)
 				lbl.TextDecorations = TextDecorations.Underline;

@@ -104,25 +104,6 @@ namespace Game4.Core
 								amount = Math.Min(t.NewWealth - MIN_WEALTH, amount);
 
 							t.TempInfluenceAbsAmount = amount;
-
-							/// эти вычисления мало сказываются на результате
-							///// делаем коррекцию приоритетности целевой аудитории
-							///// по персонажам, которые негативны и не поддаются улучшению
-							//if (shouldActPositive && t.Positiveness < Positiveness &&
-							//	!t.AllowChangePositiveness && !t.AutoIncreasePositiveness)
-							//	/// экономим силы помощи, если мы видим, что этот персонаж 
-							//	/// не изменится (допустим, что это как-то заметно)
-							//	t.TempInfluenceStrategyCoef = 0.5;
-
-							//else if (!shouldActPositive && t.Positiveness < Positiveness &&
-							//	!t.AllowChangePositiveness && !t.AutoIncreasePositiveness)
-							//	/// негативно влияем на того, кто хуже нас и кто не собирается
-							//	/// меняться
-							//	t.TempInfluenceStrategyCoef = 1.5;
-
-							//else
-							//	t.TempInfluenceStrategyCoef = 1;
-
 							t.TempInfluenceStrategyCoef = 1;
 
 							ps.Add(t);
