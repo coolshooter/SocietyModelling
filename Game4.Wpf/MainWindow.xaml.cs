@@ -30,6 +30,13 @@ namespace Game4.Wpf
 		{
 			btnRun.IsEnabled = false;
 
+			await BuildAndRun();
+
+			btnRun.IsEnabled = true;
+		}
+
+		async Task BuildAndRun()
+		{
 			double? positiveness1 = txtPositiveness1.Text.ParseNullableDouble();
 			double? positiveness2 = txtPositiveness2.Text.ParseNullableDouble();
 			double? positiveness3 = txtPositiveness3.Text.ParseNullableDouble();
@@ -49,8 +56,11 @@ namespace Game4.Wpf
 
 				AddUIElements(env, cnvMain);
 
+				bool addInfoAboutLeftAndRight = !(positiveness1 == positiveness2 &&
+					(chbStable1.IsChecked == true) == (chbStable2.IsChecked == true));
+
 				await env.Run(false, p => SetColorAndInfo(p),
-					(ps, i) => UpdateSummary(ps, i));
+					(ps, i) => UpdateSummary(ps, i, env, addInfoAboutLeftAndRight));
 
 				foreach (var p in env.AllPersonages)
 					SetColorAndInfo(p);
@@ -58,8 +68,6 @@ namespace Game4.Wpf
 				var keyPs = env.AllPersonages.Where(p => p.IsKey).ToList();
 				var sorted = env.AllPersonages.OrderByDescending(p => p.Wealth).ToList();
 			}
-
-			btnRun.IsEnabled = true;
 		}
 
 		void AddUIElements(Env env, Canvas cnv)
@@ -117,18 +125,40 @@ namespace Game4.Wpf
 				lbl.TextDecorations = null;
         }
 
-		void UpdateSummary(List<Personage> allPersonages, int iteration)
+		void UpdateSummary(List<Personage> allPersonages, int iteration, Env env,
+			bool addInfoAboutLeftAndRight)
 		{
 			double avg = allPersonages.Average(p => p.Wealth);
 			double min = allPersonages.Min(p => p.Wealth);
 			double max = allPersonages.Max(p => p.Wealth);
+
+			var leftPart = allPersonages
+				.Where(p => p.XIndex <= Math.Round(env.Width / 2.0) - 1)
+				.ToList();
+
+			var rightPart = allPersonages
+				.Where(p => p.XIndex >= Math.Round(env.Width / 2.0))
+				.ToList();
+
+			double avgLeft = leftPart.Average(p => p.Wealth);
+			double avgRight = rightPart.Average(p => p.Wealth);
 
 			lblInfo.Text = 
 				"Шаг: " + (iteration + 1) +
 				", средний уровень жизни: " + RoundAndFormatValueForUI(avg) +
 				", минимальный: " + RoundAndFormatValueForUI(min) +
 				", максимальный: " + RoundAndFormatValueForUI(max);
-		}
+
+			if (addInfoAboutLeftAndRight)
+			{
+				lblInfo2.Text =
+						string.Format("средний уровень в левой половине: {0}, в правой: {1}",
+						RoundAndFormatValueForUI(avgLeft),
+						RoundAndFormatValueForUI(avgRight));
+			}
+			else
+				lblInfo2.Text = "";
+        }
 
 		string RoundAndFormatValueForUI(double value)
 		{

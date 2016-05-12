@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="280"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
 		
@@ -61,12 +61,13 @@
                 <TextBlock>
 					Персонажи переключаются между стратегиями, вдохновляясь их преимуществами. 
                 </TextBlock>
-                <TextBlock>
-				</TextBlock>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="3">
-            <TextBlock x:Name="lblInfo" FontWeight="Bold">Информация</TextBlock>
+            <StackPanel>
+				<TextBlock x:Name="lblInfo" FontWeight="Bold">Информация</TextBlock>
+                <TextBlock x:Name="lblInfo2" FontWeight="Bold"></TextBlock>
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="4">
             <Button x:Name="btnRun" HorizontalAlignment="Right" Width="250">Запустить</Button>
