@@ -135,7 +135,7 @@ namespace Game4.Core
 
 			if (AutoIncreasePositiveness && Positiveness.HasValue)
 			{
-				NewPositiveness = Positiveness + 0.05;
+				NewPositiveness = Positiveness + 0.02;
 
 				if (NewPositiveness > 1)
 					NewPositiveness = 1;
@@ -177,7 +177,7 @@ namespace Game4.Core
 					/// скорость смещения делаем не слишком быстрой,
 					/// приравнивая свою прошлую стратегию к стратегиям k
 					/// новых эффективно влияющих соседей
-					double k = 3;
+					double k = 6;
 					sum += k * Positiveness.Value;
 					effSum += k;
 				}
@@ -256,6 +256,9 @@ namespace Game4.Core
 					eff2 = 0.5;
 				else
 					eff2 = 0.2;
+
+				/// ничего не будет делать
+				eff1 = eff2 = 0;
 			}
 
 			return eff1 * eff2;

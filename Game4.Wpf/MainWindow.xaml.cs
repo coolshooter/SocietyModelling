@@ -37,15 +37,15 @@ namespace Game4.Wpf
 
 		async Task BuildAndRun()
 		{
-			double? positiveness1 = txtPositiveness1.Text.ParseNullableDouble();
-			double? positiveness2 = txtPositiveness2.Text.ParseNullableDouble();
-			double? positiveness3 = txtPositiveness3.Text.ParseNullableDouble();
+			double positiveness1 = txtPositiveness1.Text.ParseDouble();
+			double positiveness2 = txtPositiveness2.Text.ParseDouble();
+			double positiveness3 = txtPositiveness3.Text.ParseDouble();
 
 			if (positiveness1 < 0 || positiveness1 > 1 ||
 				positiveness2 < 0 || positiveness2 > 1 ||
 				positiveness3 < 0 || positiveness3 > 1)
 			{
-				MessageBox.Show("Стратегия должна быть в интервале 0..1 или пустое значение");
+				MessageBox.Show("Стратегия должна быть в интервале 0..1");
 			}
 			else
 			{
@@ -106,7 +106,7 @@ namespace Game4.Wpf
 			{
 				byte red = (byte)(255 * (1 - p.Positiveness));
 				byte green = (byte)(255 * p.Positiveness);
-				byte blue = 0;
+				byte blue = (byte)(255 * (1 - p.Positiveness));
 
 				backBrush = new SolidColorBrush(
 					Color.FromRgb(red, green, blue));
